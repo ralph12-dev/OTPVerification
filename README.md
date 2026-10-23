@@ -68,25 +68,3 @@ Use a sender address authorized by your provider. After changing `.env`, run `ph
 2. The app generates and emails a six-digit code.
 3. Visit `/verify-otp` and enter the code received by email.
 4. A valid code redirects to `/home`; access to that page requires successful verification.
-
-## Verification performed
-
-- The OTP feature test suite passes: `php artisan test --filter=OtpVerificationTest`.
-- Manual end-to-end testing confirmed that a code was delivered by email and a valid code unlocked the protected home page.
-- Incorrect and expired codes were rejected with `The OTP is incorrect or has expired.`
-- Empty and non-six-digit submissions displayed their required validation messages.
-
-Automated tests use Laravel's `Mail::fake()` and do not send real email. Real delivery must be tested with valid SMTP settings.
-
-## Run the tests
-
-```powershell
-php artisan test --filter=OtpVerificationTest
-```
-
-## Submission checklist
-
-- Submit the Laravel project source, including application code, migrations, tests, and this README.
-- Include screenshots of the request page, verification page, successful verification/protected home page, and relevant validation or error messages, as requested by the activity.
-- Do not include `.env` or expose SMTP credentials in screenshots, source code, or submission notes.
-- SMS integration is only needed if it was separately assigned by the instructor.
